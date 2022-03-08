@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name        课程表转ICS
+// @name        GDUST-正方教务系统课程表转ICS
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  通过对新版正方教务系统的课表页面的解析，实现导出一个适用于大部分ics日历的文件，理论使用于所有使用新版正方教务系统（可对 ``include`` 进行一定的修改以适用不同的学校的链接）
+// @description  通过对新版正方教务系统的课表页面的解析，实现导出一个适用于大部分ics日历的文件，适配与广东科技学院正方教务系统，理论使用于所有使用新版正方教务系统（可对 ``include`` 进行一定的修改以适用不同的学校的链接）
 // @author       feldan
 // @compatible   chrome
 // @compatible   firefox
@@ -453,7 +453,7 @@ class ICS{
             Calendar.CALSCALE = "GREGORIAN";        // 历法，默认是公历
             Calendar.TIMEZONE = "Asia/Shanghai"     // 时区，默认是上海
             Calendar.ISVALARM = true;               // 提醒，默认是开启
-            Calendar.VALARM = "-P0DT0H10M0S";       // 提醒，默认10分钟
+            Calendar.VALARM = "-PT0D0H10M0S";       // 提醒，默认10分钟
             Calendar.WKST = "SU";                   // 一周开始，默认是周日
 
         })(this.Calendar || (this.Calendar = {}));
