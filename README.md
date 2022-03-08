@@ -5,6 +5,7 @@
 > 经测试适配于新版正方教务系统。
 ## 准备工作
 - 安装[Tampermonkey](https://www.tampermonkey.net/)
+- 安装[ZFClassTable2ICS](https://greasyfork.org/zh-CN/scripts/441136-gdust-%E6%AD%A3%E6%96%B9%E6%95%99%E5%8A%A1%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E8%A1%A8%E8%BD%ACics)
 ## 烹饪过程
 **主要修改3个地方**
 ### 第一 修改教务处系统地址
