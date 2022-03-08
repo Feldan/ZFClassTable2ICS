@@ -370,7 +370,7 @@ function ClassScheduleToICS(){
             minute = minute - 60;
             hour = parseInt(hour) + 1;
         }
-        var time =  "" + getFixedLen("" + hour,2) + getFixedLen("" + minute,2);
+        var time =  "" + getFixedLen("" + hour,2) + getFixedLen("" + minute,2) + "00";
         console.log(time)
         return time;
     }
