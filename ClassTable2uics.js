@@ -401,7 +401,9 @@ function ClassScheduleToICS(){
             for(let i = 0; i < course.isSingleOrDouble.length; ++i){
                 let e = new ICSEvent("" + getDate(course.startWeek[i], course.week) + getTime(course.startTime, 0),
                                     "" + getDate(course.startWeek[i], course.week) + getTime(course.endTime, 45), //设定单节上课时间
-                                    "" + course.name + " " + course.location + " " + course.teacher + " " + course.info);
+                                    "" + course.name + " " + course.teacher,
+                                    "" + course.location,
+                                    "" + course.info);
                 e.setRRULE("WEEKLY", res.Calendar.WKST,
                             "" + (course.endWeek[i] - course.startWeek[i] + course.isSingleOrDouble[i]) / course.isSingleOrDouble[i],
                             "" + course.isSingleOrDouble[i],
@@ -435,7 +437,7 @@ function SetBtnZero(){
 }
 
 // -------------------------------- ICS类，用于处理所有有关日历的操作 ------------------------------------------//
-var CRLF = "\r\n";
+var CRLF = "\n";
 var SPACE = " ";
 class ICS{
 
@@ -474,6 +476,7 @@ class ICS{
         this.ics.push(e.getDTEND());
         if(e.isrrule == true)this.ics.push(e.getRRULE());
         this.ics.push(e.getSUMMARY());
+        this.ics.push(e.getLOCATION());
         if(this.Calendar.ISVALARM == true)this.pushAlarm();
         this.ics.push("END:VEVENT");
         this.ics.push(CRLF);
@@ -538,10 +541,12 @@ class ICS{
 }
 // -------------------------------- ICS类，用于处理所有有关日历的操作 ------------------------------------------//
 class ICSEvent{
-    constructor(DTSTART, DTEND, SUMMARY){
+    constructor(DTSTART, DTEND, SUMMARY, LOCATION, DESCRIPTION){
         this.DTSTART = DTSTART;
         this.DTEND = DTEND;
         this.SUMMARY = SUMMARY;
+        this.LOCATION = LOCATION;
+        this.DESCRIPTION= DESCRIPTION;
     }
     isrrule = false;
     RRULE;
@@ -560,6 +565,12 @@ class ICSEvent{
     }
     getSUMMARY(){
         return "SUMMARY:" + this.SUMMARY;
+    }
+    getLOCATION(){
+        return "LOCATION:" + this.LOCATION;
+    }
+    getDESCRIPTION(){
+        return "DESCRIPTION:" + this.DESCRIPTION;
     }
 }
 
