@@ -477,6 +477,7 @@ class ICS{
         if(e.isrrule == true)this.ics.push(e.getRRULE());
         this.ics.push(e.getSUMMARY());
         this.ics.push(e.getLOCATION());
+        this.ics.push(e.getDESCRIPTION());
         if(this.Calendar.ISVALARM == true)this.pushAlarm();
         this.ics.push("END:VEVENT");
         this.ics.push(CRLF);
@@ -486,7 +487,7 @@ class ICS{
     pushAlarm(){
         this.ics.push("BEGIN:VALARM");
         this.ics.push("ACTION:DISPLAY");
-        this.ics.push("DESCRIPTION:This is an event reminder");
+        // this.ics.push("DESCRIPTION:This is an event reminder");
         this.ics.push("TRIGGER:" + this.Calendar.VALARM);
         this.ics.push("END:VALARM");
     }
